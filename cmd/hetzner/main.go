@@ -121,7 +121,7 @@ func formatString(s servers) string {
 	var builder strings.Builder
 	writer := tabwriter.NewWriter(&builder, 15, 4, 10, ' ', 0)
 
-	fmt.Fprintf(&builder, "I found you the following %d servers that may be of interest:\n", len(s.Server))
+	fmt.Fprintf(&builder, ":wave: I found you the following %d servers that may be of interest:\n\n", len(s.Server))
 	fmt.Fprintf(writer, "%s\t%s\t%s\t%s\t%s\t%s\t\n", "Key", "RAM(GB)", "HDD", "CPU", "Price(€)", "Description")
 	for _, v := range s.Server {
 		fmt.Fprintf(writer, "%d\t%d\t%s\t%s\t%s\t%s\t\n", v.Key, v.RAM, v.HDDHR, v.CPU, v.Price, v.FreeText)
