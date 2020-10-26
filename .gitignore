@@ -15,4 +15,4 @@
 # vendor/
 
 template.yml
-.aws-sam
+.aws-sam/
