@@ -3,7 +3,6 @@ package slack
 import (
 	"bytes"
 	"encoding/json"
-	"log"
 	"net/http"
 	"time"
 )
@@ -35,12 +34,10 @@ func SendMessage(request *RequestBody, webhook string) error {
 		Timeout: 2 * time.Second,
 	}
 
-	res, err := client.Do(req)
+	_, err = client.Do(req)
 	if err != nil {
 		return err
 	}
-
-	log.Print(res.StatusCode)
 
 	return nil
 }
