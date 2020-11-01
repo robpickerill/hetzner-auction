@@ -17,3 +17,4 @@
 template.yml
 output.yml
 .aws-sam/
+cmd/hetzner/hetzner

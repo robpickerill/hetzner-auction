@@ -45,10 +45,14 @@ func formatString(s *hetzner.Servers) string {
 	writer := tabwriter.NewWriter(&builder, 15, 4, 10, ' ', 0)
 
 	fmt.Fprintf(&builder, ":wave: I found you the following %d servers that may be of interest:\n\n", len(s.Servers))
+	fmt.Fprint(&builder, "```")
 	fmt.Fprintf(writer, "%s\t%s\t%s\t%s\t%s\t%s\t\n", "Key", "RAM(GB)", "HDD", "CPU", "Price(€)", "Description")
+	fmt.Fprintf(writer, "%s\t%s\t%s\t%s\t%s\t%s\t\n", "---", "-------", "---", "---", "--------", "-----------")
 	for _, v := range s.Servers {
 		fmt.Fprintf(writer, "%d\t%d\t%s\t%s\t%s\t%s\t\n", v.Key, v.RAM, v.HDDHR, v.CPU, v.Price, v.FreeText)
 	}
+	writer.Flush()
+	fmt.Fprint(&builder, "```")
 
 	writer.Flush()
 	return builder.String()
