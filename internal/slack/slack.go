@@ -21,7 +21,10 @@ func NewMessage(message string) *RequestBody {
 
 // SendMessage sends a message to slack
 func SendMessage(request *RequestBody, webhook string) error {
-	slackBody, _ := json.Marshal(request)
+	slackBody, err := json.Marshal(request)
+	if err != nil {
+		return err
+	}
 
 	req, err := http.NewRequest(http.MethodPost, webhook, bytes.NewBuffer(slackBody))
 	if err != nil {
