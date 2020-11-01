@@ -71,7 +71,7 @@ func handleRequest() {
 	if len(filteredServers.Servers) > 0 {
 		log.Printf("Sending notification to slack")
 
-		message := slack.CreateMessage(formatString(filteredServers))
+		message := slack.NewMessage(formatString(filteredServers))
 
 		webhook := os.Getenv("SLACK_WEBHOOK")
 		err := slack.SendMessage(message, webhook)

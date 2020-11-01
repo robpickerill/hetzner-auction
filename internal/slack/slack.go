@@ -12,8 +12,8 @@ type RequestBody struct {
 	Text string `json:"text"`
 }
 
-// CreateMessage is used to create a message body for sending to slack
-func CreateMessage(message string) *RequestBody {
+// NewMessage is used to create a message body for sending to slack
+func NewMessage(message string) *RequestBody {
 	return &RequestBody{
 		message,
 	}
